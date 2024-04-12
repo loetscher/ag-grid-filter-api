@@ -39,8 +39,8 @@ import { IOlympicData } from "./interfaces";
       <div class="button-group">
         <button
           (click)="restoreFromHardCoded()"
-          title="Name = 'Michael P%'">
-          Set Custom Filter Model
+          [title]="getFilterValue()">
+          Set Custom Filter Model for 'Athlete'
         </button>
         <button (click)="clearFilters()">Reset Filters</button>
       </div>
@@ -71,6 +71,10 @@ export class AppComponent {
   };
   public rowData!: IOlympicData[];
 
+  public getFilterValue(): string{
+    return "Michael P";
+  }
+
   constructor(private http: HttpClient) {}
 
   clearFilters() {
@@ -79,7 +83,7 @@ export class AppComponent {
 
   restoreFromHardCoded() {
     let hardcodedFilter = {
-      athlete: { filterType: 'text', type: "startsWith", filter: "Michael P" }
+      athlete: { type: "startsWith", filter: this.getFilterValue() }
     };
     this.gridApi.setFilterModel(hardcodedFilter);
   }
