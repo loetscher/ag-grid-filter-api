@@ -60,8 +60,8 @@ export class AppComponent {
   private gridApi!: GridApi<IOlympicData>;
 
   public columnDefs: ColDef[] = [
-    //{ field: "athlete", filter: "agTextColumnFilter" },
-    { field: "athlete", filter: true },
+    { field: "athlete", filter: "agTextColumnFilter" },
+    //{ field: "athlete", filter: true },
     { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
   ];
   public defaultColDef: ColDef = {
